@@ -23,23 +23,23 @@ Primero, necesitamos identificar las entidades y sus atributos.
 * **collections**: id_collection, name_collection
 * **movies_collections**: id_collection, id_movie
 
-
+<!-- 
 * **production_companies**: id_production_companies, name_production_companies
 * **movies_production_companies**: id_movie, id_production_companies
 
 
 * **production_countries:** id_production_countries,	name_production_countries
 * **movies_production_countries:** id_movie, id_production_countries
-
+-->
 
 * **genres:** id_genre, name_genre
 * **movies_genres:**  id_movie, id_genre
 
-
+<!--
 * **languages:**	id_language, name_language
 * **movie_spoken_language:** id_movie, id_language
 * **movie_original_language:** id_movie, id_language
-
+-->
 
 ## 3. Crear Tablas en Python 
 **Requerimientos**
