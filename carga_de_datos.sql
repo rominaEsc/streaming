@@ -10,12 +10,12 @@ CREATE TABLE IF NOT EXISTS `movies` (
     `tagline` TEXT,
     `overview` TEXT,
     `id_collection` VARCHAR(255),
-    `runtime` FLOAT,
+    `runtime` FLOAT NULL,
     `release_date` DATE,
     `release_year` INT,
     `popularity` VARCHAR(255),
-    `vote_average` int null,
-    `vote_count` INT,
+    `vote_average` int,
+    `vote_count` int,
     `budget` BIGINT,
     `revenue` BIGINT,
     `return` FLOAT,
@@ -64,15 +64,15 @@ SELECT * FROM `generos`;
 
 DROP TABLE IF EXISTS `movies_genres`;
 CREATE TABLE IF NOT EXISTS `movies_genres` (
-    `id_peilicula` int NOT NULL,
-    `id_genero` int NOT NULL,
-    FOREIGN KEY (`id_movie`) REFERENCES `peliculas`(`id_movie`) ON DELETE CASCADE,
-    FOREIGN KEY (`id_genre`) REFERENCES `generos`(`id_genre`) ON DELETE CASCADE,
+    `id_movie` int NOT NULL,
+    `id_genre` int NOT NULL,
+    FOREIGN KEY (`id_movie`) REFERENCES `movies`(`id_movie`) ON DELETE CASCADE,
+    FOREIGN KEY (`id_genre`) REFERENCES `genres`(`id_genre`) ON DELETE CASCADE,
     PRIMARY KEY (`id_movie`, `id_genre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\movies_genres_df.csv'
-INTO TABLE `movies_genre`
+INTO TABLE `movies_genres`
 FIELDS TERMINATED BY ','
 ENCLOSED BY '"'
 ESCAPED BY '\\'
@@ -80,3 +80,4 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
 SELECT * FROM `movies_genres`;
+
