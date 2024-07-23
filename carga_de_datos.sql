@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `movies` (
     PRIMARY KEY (`id_movie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
+
 /* Cargar datos en la tabla 'peliculas' */
 LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\movies_df.csv'
 INTO TABLE `movies`
@@ -37,13 +38,11 @@ SELECT * FROM `movies`;
 
 -- ----------------------------------------------------
 
-USE streaming;
-
 /* Importación de la tabla 'generos' */
 
 DROP TABLE IF EXISTS `genres`;
 CREATE TABLE IF NOT EXISTS `genres` (
-    `id_genre` int NOT NULL AUTO_INCREMENT,
+    `id_genre` int NOT NULL,
     `name_genre` VARCHAR(128) NOT NULL,
     PRIMARY KEY (`id_genre`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
@@ -56,7 +55,7 @@ ESCAPED BY '\\'
 LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
-SELECT * FROM `generos`;
+SELECT * FROM `genres`;
 
 -- ---------------------------------------
 
@@ -66,9 +65,7 @@ DROP TABLE IF EXISTS `movies_genres`;
 CREATE TABLE IF NOT EXISTS `movies_genres` (
     `id_movie` int NOT NULL,
     `id_genre` int NOT NULL,
-    FOREIGN KEY (`id_movie`) REFERENCES `movies`(`id_movie`) ON DELETE CASCADE,
-    FOREIGN KEY (`id_genre`) REFERENCES `genres`(`id_genre`) ON DELETE CASCADE,
-    PRIMARY KEY (`id_movie`, `id_genre`)
+    FOREIGN KEY (`id_genre`) REFERENCES `genres`(`id_genre`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\movies_genres_df.csv'
@@ -80,4 +77,3 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
 SELECT * FROM `movies_genres`;
-
