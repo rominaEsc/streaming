@@ -85,7 +85,7 @@ SELECT * FROM `movies_genres`;
 DROP TABLE IF EXISTS `collections_df`;
 CREATE TABLE IF NOT EXISTS `collections_df` (
 	`id_collection` INT NOT NULL AUTO_INCREMENT, 
-    `name_collection` VARCHAR(200) NOT NULL, 
+  	`name_collection` VARCHAR(200) NOT NULL, 
     PRIMARY KEY (`id_collection`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
     
@@ -104,7 +104,7 @@ IGNORE 1 LINES;
 DROP TABLE IF EXISTS `movies_collections`;
 CREATE TABLE IF NOT EXISTS `movies_collections` (
 	`id_collection` INT NOT NULL AUTO_INCREMENT, 
-    `id_movie` VARCHAR(200) NOT NULL, 
+    	`id_movie` VARCHAR(200) NOT NULL, 
     PRIMARY KEY (`id_collection`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
     
