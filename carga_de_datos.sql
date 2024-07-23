@@ -65,7 +65,8 @@ DROP TABLE IF EXISTS `movies_genres`;
 CREATE TABLE IF NOT EXISTS `movies_genres` (
     `id_movie` int NOT NULL,
     `id_genre` int NOT NULL,
-    FOREIGN KEY (`id_genre`) REFERENCES `genres`(`id_genre`) ON DELETE CASCADE
+    FOREIGN KEY (`id_genre`) REFERENCES `genres`(`id_genre`) ON DELETE CASCADE,
+    FOREIGN KEY (`id_movie`) REFERENCES `movies`(`id_movie`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
 
 LOAD DATA INFILE 'C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\movies_genres_df.csv'
