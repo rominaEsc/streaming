@@ -77,3 +77,41 @@ LINES TERMINATED BY '\n'
 IGNORE 1 LINES;
 
 SELECT * FROM `movies_genres`;
+
+-- -------------------------------------
+
+/* Importación de la tabla 'collections_df' */
+
+DROP TABLE IF EXISTS `collections_df`;
+CREATE TABLE IF NOT EXISTS `collections_df` (
+	`id_collection` INT NOT NULL AUTO_INCREMENT, 
+    `name_collection` VARCHAR(200) NOT NULL, 
+    PRIMARY KEY (`id_collection`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+    
+LOAD DATA INFILE "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/collections_df.csv"
+INTO TABLE `collections_df`
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+ESCAPED BY '\\'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
+
+-- -------------------------------------
+
+/* Importación de la tabla 'movies_collections' */
+
+DROP TABLE IF EXISTS `movies_collections`;
+CREATE TABLE IF NOT EXISTS `movies_collections` (
+	`id_collection` INT NOT NULL AUTO_INCREMENT, 
+    `id_movie` VARCHAR(200) NOT NULL, 
+    PRIMARY KEY (`id_collection`)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish_ci;
+    
+LOAD DATA INFILE "C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/movies_collections.csv" 
+INTO TABLE `movies_collections`
+FIELDS TERMINATED BY ','
+ENCLOSED BY '"'
+ESCAPED BY '\\'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES;
