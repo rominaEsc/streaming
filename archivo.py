@@ -28,7 +28,7 @@ def peliculas_dia(dia):
 
 
 
-# -------- 2. función mes_dict
+# -------- 2. función peliculas_mes
 
 # Convertimos el DataFrame a un diccionario para búsqueda rápida
 mes_dict = estrenos_por_mes_df.set_index('mes_de_estreno_nombre')['cant_de_estrenos'].to_dict()
