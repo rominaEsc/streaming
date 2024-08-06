@@ -18,13 +18,16 @@ estrenos_por_mes_df = pd.read_csv('data/data_processed/estrenos_por_mes_df.csv',
 # Convertimos el DataFrame a un diccionario para búsqueda rápida
 dia_dict = estrenos_por_dia_df.set_index('dia_de_estreno_nombre')['cant_de_estrenos'].to_dict()
 
-@app.get('/peliculas_dia/{dia}')
-def peliculas_dia(dia):
+@app.get('/peliculas_dia/{dia_de_la_semana}')
+def peliculas_dia(dia_de_la_semana):
     '''Se ingresa el mes y la funcion retorna la cantidad de peliculas que 
     se estrenaron ese mes (nombre del mes, en str, ejemplo 'enero') historicamente''' 
     
-    respuesta = dia_dict[dia]
-    return {'mes': dia, 'cantidad': respuesta}
+    assert dia_de_la_semana in ['lunes','martes','miercoles','jueves', 'viernes', 'sabado', 'domingo'], f'Debe ingresar el nombre del día en español(sin tilde). Ej: "miercoles"'
+    
+    respuesta = dia_dict[dia_de_la_semana]
+    
+    return {'dia_de_la_semana': dia_de_la_semana, 'cantidad': respuesta}
 
 
 
@@ -37,8 +40,11 @@ mes_dict = estrenos_por_mes_df.set_index('mes_de_estreno_nombre')['cant_de_estre
 def peliculas_mes(mes):
     '''Se ingresa el mes y la funcion retorna la cantidad de peliculas que 
     se estrenaron ese mes (nombre del mes, en str, ejemplo 'enero') historicamente''' 
-    
+
+    assert mes in ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'], f'Debe ingresar el nombre del mes en español. Ej: "Septiembre"'
+
     respuesta = mes_dict[mes]
+
     return {'mes': mes, 'cantidad': respuesta}
 
 # --------------------------------
